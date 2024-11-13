@@ -4,7 +4,6 @@
 
 * Manually Launch a `t2.micro` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
 * Enable `SSH`, `HTTP`, `HTTPS` and `edit`.
-* Type : `Custom TCP`     Source Type: `Anywhere`    Port Range : `8080-8090`
 * Configure Storage: `10 GiB`
 * Once Launched, Connect to the Instance using `MobaXterm` or `Putty` or `EC2 Instance Connect` with username "`ubuntu`".
 
@@ -28,7 +27,7 @@ bash
 ```
 vi kops.sh
 ```
-```
+```bash
 #!/bin/bash
 
 echo "Let's get started with Kubernetes cluster creation using KOPS!"
