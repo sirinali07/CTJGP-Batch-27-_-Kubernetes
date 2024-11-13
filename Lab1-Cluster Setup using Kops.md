@@ -24,9 +24,11 @@ Open a new bash shell
 ```
 bash
 ```
+Create Kops script file
 ```
 vi kops.sh
 ```
+Add the below code in the script file
 ```bash
 #!/bin/bash
 
@@ -96,6 +98,8 @@ done
 
 
 ```
+save the file using `ESCAPE + :wq!`
+
 Execute the Kops script
 ```
 . ./kops.sh
