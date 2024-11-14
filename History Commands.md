@@ -1,0 +1,73 @@
+## Day 1
+ vi kops.sh
+ . ./kops.sh
+ kops
+ kops get --help
+ kops get clusters
+ kubectl get nodes
+ aws autoscaling describe-auto-scaling-groups
+ aws autoscaling --help
+ aws autoscaling help
+ clear
+ sudo hostnamectl set-hostname kops
+ bash
+ clear
+ aws autoscaling update-auto-scaling-group  --auto-scaling-group-name nodes-us-west-2c.ctjgpbatch27-2024-11-13-16-11.k8s.loca   --min-size 2  --max-size 2 --region us-west-2
+ aws autoscaling update-auto-scaling-group  --auto-scaling-group-name nodes-us-west-2c.ctjgpbatch27-2024-11-13-16-11.k8s.local   --min-size 2  --max-size 2 --region us-west-2
+ kubectl get nodes
+ kops export kubeconfig --admin
+ kubectl get nodes
+ ls -al
+ cat .kube/config
+ clear
+ kubectl get nodes
+ kubectl get pod
+ kubectl get pod --help
+ kubectl get pods --all-namespaces
+ kubectl run pod-1 --image nginx
+ kubectl get pod
+ kubectl describe pod pod-1
+ clear
+ kubectl run pod-1 --image nginx --dry-run=client -o yaml
+ kubectl run pod-1 --image nginx --dry-run=client -o yaml > pod.yaml
+ ls
+ cat pod.yaml
+ vi pod.yaml
+ clear
+ cat pod.yaml
+ kubectl get po
+ kubectl apply -f pod.yaml
+ kubectl get po
+ kubectl describe po pod-2
+ kubectl get po -A
+ kubectl get ns
+ kubectl get namespace
+ kubectl create ns test-ns
+ kubectl get ns
+ kubectl get all
+ kubectl get all -n test-ns
+ kubectl run pod-3 --image nginx -n test-ns
+ kubectl get all -n test-ns
+ vi pod.yaml
+ kubectl apply -f pod.yaml
+ kubectl get all -n test-ns
+ kubectl get po -n test-ns
+ kubectl get po -A
+ ubuntu@kops:~$ cat pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test-ns
+  labels:
+    app: webapp
+  name: pod-4
+spec:
+  containers:
+  - image: nginx
+    name: container-1
+  - name: container-2
+    image: busybox
+    command:
+    - /bin/sh
+    - -c
+    - sleep 3000
