@@ -71,3 +71,68 @@ spec:
     - /bin/sh
     - -c
     - sleep 3000
+-----------------------------------------------------------------------------------------
+### Day 4
+
+kops export kubeconfig --admin
+clear
+kubectl get po
+kubectl get po -A
+kubectl get po -A -o wide
+clear
+kubectl get po -A
+kubectl get po -A -o wide
+kubectl describe pod  kube-scheduler-i-03a63b90711a4d78d -n kube-system
+clear
+kubectl get po -A
+kubectl get po -A -o wide
+kubectl get ns
+kubectl api-resources
+clear
+ls
+cat pod.yaml
+kubectl run test-pod1 --image httpd --help
+kubectl run test-pod1 --image httpd --label app=webapp --port 80
+kubectl run test-pod1 --image httpd --labels app=webapp --port 80
+kubectl get po
+kubectl get po --show-labels
+kubectl get po --show-labels -o wide
+kubectl get po --show-labels -o wide -A
+clear
+kubectl get po --show-labels -o wide
+kubectl describe po test-pod1
+clear
+kubectl get po --show-labels
+kubectl label pod test-pod1 tier=frontend type=webserver
+kubectl get po --show-labels
+clear
+vi httpd-pod.yaml
+kubectl apply -f httpd-pod.yaml
+vi httpd-svc.yaml
+kubectl apply -f httpd-svc.yaml
+kubectl get pod
+kubectl get service
+kubectl get pod -o wide
+kubectl describe service httpd-svc
+curl http://httpd-svc
+curl http://100.66.43.221
+curl 100.66.43.221:80
+ssh -t ubuntu@<Node_IP> curl <Cluster_IP>:<Service_Port>
+kubectl get pod -o wide
+ssh -t ubuntu@172.20.170.2160 curl 100.66.43.221:80
+ssh -t ubuntu@172.20.170.2160 curl http://100.66.43.221
+clear
+kubectl get pod -o wide
+kubectl describe service httpd-svc
+kubectl get ep httpd-svc
+vi httpd-svc.yaml
+kubectl apply -f httpd-svc.yaml
+kubectl get svc
+kubectl exec -it httpd-pod -- bash
+clear
+kubectl get svc
+vi httpd-svc.yaml
+kubectl apply -f httpd-svc.yaml
+kubectl get svc
+-----------------------------------------------------------------------------------------
+### Day 
