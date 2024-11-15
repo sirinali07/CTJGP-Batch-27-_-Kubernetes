@@ -4,6 +4,9 @@
 ```
 vi httpd-pod.yaml
 ```
+
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -20,6 +23,8 @@ spec:
     ports:
        - containerPort: 80
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply the pod definition yaml
 ```
 kubectl apply -f httpd-pod.yaml
@@ -42,6 +47,8 @@ Create  a ClusterIP service using below YAML
 ```
 vi httpd-svc.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -58,6 +65,8 @@ spec:
     targetPort: 80
   type: ClusterIP
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply above definition using below to create a ClusterIP service
 ```
 kubectl apply -f httpd-svc.yaml
@@ -87,6 +96,8 @@ Modify the service created in the previous task to type NodePort
 ```
 vi httpd-svc.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -103,6 +114,8 @@ spec:
     targetPort: 80
   type: NodePort
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply the changes using below command
 ```
 kubectl apply -f httpd-svc.yaml
@@ -128,6 +141,8 @@ Modify the service created in the previous task to type LoadBalancer
 ```
 vi httpd-svc.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -144,6 +159,8 @@ spec:
     targetPort: 80
   type: LoadBalancer
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply the changes using below command
 ```
 kubectl apply -f httpd-svc.yaml
