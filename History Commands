@@ -135,4 +135,95 @@ vi httpd-svc.yaml
 kubectl apply -f httpd-svc.yaml
 kubectl get svc
 -----------------------------------------------------------------------------------------
+### Day 5
+
+### Terminal 1
+
+ kubectl get deployment
+ kubectl get deployment -A
+ clear
+ kubectl get deployment
+ kubectl create deploy dep-1 --image nginx --replicas 3 --port 80 --help
+ kubectl create deploy dep-1 --image nginx --replicas 3 --port 80
+ kubectl get deployment
+ kubectl get po
+ kubectl get deployment
+ kubectl get rs
+ kubectl delete po dep-1-666d87c6d-wkbcf
+ kubectl delete po --all
+ kubectl get deploy
+ kubectl describe deploy dep-1
+ kubectl get rs
+ kubectl describe rs dep-1-666d87c6d
+ clear
+ kubectl get deploy
+ kubectl autoscale --help
+ clear
+ kubectl autoscale deploy dep-1 --replicas 5
+ kubectl autoscale deploy dep-1 --replica 5
+ kubectl scale deploy dep-1 --replica 5
+ kubectl scale deploy dep-1 --replicas 5
+ kubectl get deploy
+ kubectl describe deploy dep-1
+ kubectl scale deploy dep-1 --replicas 2
+ kubectl describe deploy dep-1
+ kubectl get hpa
+ kubectl autoscale deploy dep-1 --min 2 --max 5 --cpu-percent 60 --name dep-1-hpa
+ kubectl get hpa
+ kubectl describe hpa
+ clear
+ kubectl get deploy
+ kubectl describe deploy dep-1
+ kubectl rollout history deploy dep-1
+ kubectl set image deploy dep-1 nginx=nginx:1.20.2 --record
+ kubectl rollout history deploy dep-1
+ kubectl describe deploy dep-1
+ clear
+ kubectl rollout history deploy dep-1
+ kubectl rollout undo deploy dep-1 --help
+ clear
+ kubectl rollout history deploy dep-1
+ kubectl rollout undo deploy dep-1 --to-revision 1
+ kubectl rollout history deploy dep-1
+ kubectl describe deploy dep-1
+
+### Terminal 2
+
+ kubectl get pod -o wide
+ kubectl describe service httpd-svc
+ kubectl get ep httpd-svc
+ vi httpd-svc.yaml
+ kubectl apply -f httpd-svc.yaml
+ kubectl get svc
+ kubectl exec -it httpd-pod -- bash
+ clear
+ kubectl get svc
+ vi httpd-svc.yaml
+ kubectl apply -f httpd-svc.yaml
+ kubectl get svc
+ history
+ clear
+ kubectl get po -w
+ kubectl get po
+ kubectl get po -w
+ clear
+ kubectl get po -w
+ kubectl get po
+ clear
+ kubectl get po
+ clear
+ vi dep-nginx.yaml
+ kubectl apply -f dep-nginx.yaml
+ kubectl get pod
+ kubectl get deploy
+ kubectl describe deploy nginx-dep
+ kubectl rollout history deploy nginx-dep
+ kubectl edit deploy nginx-dep
+ kubectl rollout history deploy nginx-dep
+ kubectl describe deploy nginx-dep
+ kubectl rollout history deploy nginx-dep
+ kubectl rollout undo deploy nginx-dep --to-revision 1
+ kubectl rollout history deploy nginx-dep
+ kubectl describe deploy nginx-dep
+-----------------------------------------------------------------------------------------
 ### Day 
