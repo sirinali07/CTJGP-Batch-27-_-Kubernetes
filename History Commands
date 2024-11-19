@@ -268,4 +268,6 @@ kubectl get svc
  kubectl delete pod mydep-hp-cc5d6dd54-2bt5t
  kubectl get po -o wide | grep mydep-hp
 
-
+kops get clusters
+kops delete cluster --name ctjgpbatch27-2024-11-13-16-11.k8s.local --state s3://ctjgpbatch27-2024-11-13-16-11.k8s.local --
+yes
