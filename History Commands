@@ -226,4 +226,46 @@ kubectl get svc
  kubectl rollout history deploy nginx-dep
  kubectl describe deploy nginx-dep
 -----------------------------------------------------------------------------------------
-### Day 
+### Day 6
+
+ #CLusterIp
+ #NodePort
+ #LoadBalancer
+ kubectl get deploy
+ kubectl expose deploy nginx-dep --port 80 --type ClusterIP --name nginx-svc
+ kubectl get svc
+ clear
+ kubectl get svc
+ kubectl get po -o wide
+ kubectl describe svc nginx-svc
+ kubectl delete po nginx-dep-fb97cbf7f-grxsq
+ kubectl get po -o wide
+ kubectl describe svc nginx-svc
+ clear
+ kubectl get ds
+ kubectl get ds -A
+ kubectl get no
+ kubectl -n kube-system describe ds  ebs-csi-node
+ kubectl -n kube-system get po
+ kubectl get ds -A
+ kubectl -n kube-system get po -o wide | grep ebs-csi-node
+ clear
+ kubectl get ds
+ kubectl get no
+ vi ds-pod.yaml
+ kubectl apply -f ds-pod.yaml
+ kubectl get ds
+ kubectl get po -o wide
+ kubectl get no
+ kubectl get ds
+ kubectl get po -o wide
+ clear
+ vi mydep-hp.yaml
+ kubectl apply -f mydep-hp.yaml
+ kubectl get po
+ kubectl get po -o wide | grep mydep-hp
+ kubectl exec -it mydep-hp-cc5d6dd54-2bt5t -- bash
+ kubectl delete pod mydep-hp-cc5d6dd54-2bt5t
+ kubectl get po -o wide | grep mydep-hp
+
+
