@@ -79,6 +79,8 @@ Let's create the YAML file
 ```
 vi httpd-pod.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -94,7 +96,9 @@ spec:
     image: httpd
     ports:
        - containerPort: 80
-``` 
+```
+save the file using `ESCAPE + :wq!`
+
 Apply the pod definition yaml
 ```
 kubectl apply -f httpd-pod.yaml
