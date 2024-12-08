@@ -1,43 +1,38 @@
-## Task 1: Creating Deployment with hostPath
-Create a file named mydep-hp.yaml using the content given below
+## Task 1: Creating Pod with hostPath
+Create a file named mypod-hp.yaml using the content given below
 ```
-vi mydep-hp.yaml
+vi mypod-hp.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: mydep-hp
+  name: mypod-hp
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: mydep
-  template:
-    metadata:
-      labels:
-        app: mydep
-    spec:
-      containers:
-      - image: nginx:latest
-        name: con1
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: myvol
-          mountPath: /data
-      volumes:
-      - name: myvol
-        hostPath:
-          path: /data
+  containers:
+  - image: nginx:latest
+    name: con1
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: myvol
+      mountPath: /data
+  volumes:
+  - name: myvol
+    hostPath:
+      path: /data
   ```
-Save and exit the editor and Apply the Deployment yaml created in the previous step
+save the file using `ESCAPE + :wq!`
+
+Apply the Pod yaml created in the previous step
 ```
-kubectl apply -f mydep-hp.yaml
+kubectl apply -f mypod-hp.yaml
 ```
-View the objects created by Kubernetes Deployment and verify hostPath mounting in POD
+View the objects created by Kubernetes Pod and verify hostPath mounting in POD
 ```
-kubectl get deployments
+kubectl get Pods
 ```
 ```
 kubectl get pods -o wide
@@ -59,9 +54,9 @@ echo `Welcome to DevOps Training` > index.html
 ```
 exit
 ```
-Now delete your deployment
+Now delete your Pod
 ```
-kubectl delete -f mydep-hp.yaml --force
+kubectl delete -f mypod-hp.yaml --force
 ```
 Now ssh into the Node on which the particular pod( in which you went inside and created the index.html file) was running.
 ```
@@ -83,73 +78,74 @@ exit
 ```
 
 
-## Task 2 : Creating Deployment with emptyDir
+## Task 2 : Creating Pod with emptyDir
 Create a file named mydep-empty.yaml using content given below
 ```
-vi mydep-empty.yaml
+vi mypod-empty.yaml
 ```
-Paste the following content into the file:
+
+Add the given content, by pressing `INSERT`
+
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: mydep-empty
+  name: mypod-empty
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: mydep
-  template:
-    metadata:
-      labels:
-        app: mydep
-    spec:
-      containers:
-      - image: nginx:latest
-        name: con1
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: empty-vol
-          mountPath: /data
-      - image: tomcat:latest
-        name: con2
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: empty-vol
-          mountPath: /opt/data
-      volumes:
-      - name: empty-vol
-        emptyDir: {}
+  containers:
+  - image: nginx:latest
+    name: con1
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: empty-vol
+      mountPath: /data
+  - image: tomcat:latest
+    name: con2
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: empty-vol
+      mountPath: /opt/data
+  volumes:
+  - name: empty-vol
+    emptyDir: {}
   ```
 Save and exit the editor
-Apply the Deployment yaml created in the previous step
+Apply the Pod yaml created in the previous step
 ```
-kubectl apply -f mydep-empty.yaml
+kubectl apply -f mypod-empty.yaml
 ```
-View the objects created by Kubernetes Deployment and verify hostPath mounting in POD
+View the objects created by Kubernetes Pod and verify hostPath mounting in POD
 ```
-kubectl get deployments
+kubectl get Pods
 ```
 ```
 kubectl get pods
 ```
 ```
-kubectl describe pod <pod-name>
+kubectl describe pod mypod-empty
 ```
 Access shell on a container running in your Pod to verify volume
 ```
-kubectl exec -it <pod-name> -c <ctr-name> -- /bin/bash
+kubectl exec -it mypod-empty -c con1 -- /bin/bash
 ```
 ```
-kubectl exec -it <pod-name> -c <ctr-name> -- /bin/bash
+exit
 ```
+```
+kubectl exec -it mypod-empty -c con1 -- /bin/bash
+```
+```
+exit
+```
+
 ## Task 3: Cleanup the resources using the below command
 Delete the resources created during the lab:
 ```
-kubectl delete -f mydep-empty.yaml
+kubectl delete -f mypod-empty.yaml
 ```
 ```
-kubectl delete -f mydep-hp.yaml
+kubectl delete -f mypod-hp.yaml
 ```
+Ignore if already deleted
