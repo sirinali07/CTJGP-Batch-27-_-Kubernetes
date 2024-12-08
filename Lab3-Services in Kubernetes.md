@@ -1,5 +1,26 @@
 ## Services in Kubernetes
+In Kubernetes, a **service** is an abstraction that exposes a logical set of pods as a network endpoint. It provides consistent networking and load balancing for pods, even as they are dynamically created or terminated.
 
+**Why Use Services?**
+  * *Pod IP Address Ephemerality:* Pods are temporary and their IPs change as they restart. Services provide stable access to pods.
+  * *Load Balancing:* Services distribute traffic across multiple pods.
+  * *Service Discovery:* Services enable other components or external clients to locate pods without hardcoding IPs.
+
+**Types of Services**
+
+1. **ClusterIP (Default):**
+  * Exposes the service only within the cluster.
+  * Suitable for internal communication between services.
+
+2. **NodePort:**
+  * Exposes the service on a static port (30000-32767) on each node's IP.
+  * Accessible externally by using <NodeIP>:<NodePort>
+
+3. **LoadBalancer:**
+  * Integrates with a cloud provider's load balancer to expose the service externally.
+  * Suitable for public-facing applications.
+  
+----------------------------------------------------------------------
 ### Task 1: Create a pod using below yaml
 ```
 vi httpd-pod.yaml
