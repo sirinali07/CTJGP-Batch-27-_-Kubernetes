@@ -15,6 +15,8 @@ Create a dep-nginx.yaml using content given below
 ```
 vi dep-nginx.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -40,6 +42,8 @@ spec:
         ports:
         - containerPort: 80
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply the Deployment yaml created in the previous step
 ```
 kubectl apply -f dep-nginx.yaml
