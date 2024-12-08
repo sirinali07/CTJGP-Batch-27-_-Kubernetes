@@ -2,11 +2,11 @@
 
 Namespaces in Kubernetes provide a way to logically divide cluster resources. They enable:
 
-**Resource Isolation:** Segregate resources for different projects, teams, or environments.
-
-**Multi-Tenancy:** Allow multiple users or teams to share a single cluster without interference.
-
-**Efficient Resource Management:** Apply resource quotas and policies to different groups.
+ * **Resource Isolation:** Segregate resources for different projects, teams, or environments.
+ 
+ * **Multi-Tenancy:** Allow multiple users or teams to share a single cluster without interference.
+ 
+ * **Efficient Resource Management:** Apply resource quotas and policies to different groups.
 
 **Default Namespaces**
 
