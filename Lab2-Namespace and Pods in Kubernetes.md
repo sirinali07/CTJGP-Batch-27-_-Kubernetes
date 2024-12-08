@@ -17,7 +17,17 @@ Namespaces in Kubernetes provide a way to logically divide cluster resources. Th
   *kube-public:* A public namespace accessible across the cluster, often used for cluster information.
   
   *kube-node-lease:* Stores lease objects for node heartbeats.
+## Labels & Selector in Kubernetes
 
+**Labels** in Kubernetes are key-value pairs that attach metadata to objects such as pods, nodes, and services. Labels are used to:
+
+ * Organize resources.
+ * Facilitate filtering and selection of objects.
+ * Support operational management without modifying resource specifications.
+   
+**Selectors** are expressions used to filter Kubernetes objects based on their labels. They are essential for grouping and managing resources dynamically.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
 ### Task 1: Understanding Namespace commands
 
 To create a namespace
