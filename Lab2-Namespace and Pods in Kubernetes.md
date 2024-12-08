@@ -3,14 +3,20 @@
 Namespaces in Kubernetes provide a way to logically divide cluster resources. They enable:
 
 **Resource Isolation:** Segregate resources for different projects, teams, or environments.
+
 **Multi-Tenancy:** Allow multiple users or teams to share a single cluster without interference.
+
 **Efficient Resource Management:** Apply resource quotas and policies to different groups.
 
 **Default Namespaces**
-*default:* Used when no namespace is specified for resources.
-*kube-system:* Hosts Kubernetes system components like the scheduler, API server, and DNS.
-*kube-public:* A public namespace accessible across the cluster, often used for cluster information.
-*kube-node-lease:* Stores lease objects for node heartbeats.
+
+  *default:* Used when no namespace is specified for resources.
+  
+  *kube-system:* Hosts Kubernetes system components like the scheduler, API server, and DNS.
+  
+  *kube-public:* A public namespace accessible across the cluster, often used for cluster information.
+  
+  *kube-node-lease:* Stores lease objects for node heartbeats.
 
 ### Task 1: Understanding Namespace commands
 
