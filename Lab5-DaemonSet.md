@@ -1,9 +1,20 @@
 ## DaemonSet
 
+A **DaemonSet** in Kubernetes ensures that a copy of a specific Pod runs on every (or selected) node in the cluster. It is particularly useful for deploying system-level services that need to run on all nodes or a subset of them.
+
+**Uses of DaemonSet**
+  * Deploying monitoring tools like Prometheus, Grafana, Node Exporter or Datadog agents.
+  * Running log collectors like Fluentd or Filebeat to gather logs from all nodes.
+  * Deploying network daemons such as Cilium, Calico, or Weave Net for network policy enforcement.
+  * Running tools for system updates, backups, or other administrative tasks on all nodes.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 Create a DaemonSet using below yaml
 ```
 vi ds-pod.yaml
 ```
+Add the given content, by pressing `INSERT`
+
 ```yaml
 apiVersion: apps/v1
 kind: DaemonSet
@@ -24,6 +35,8 @@ spec:
       - name: fluentd-ctr
         image: nginx
 ```
+save the file using `ESCAPE + :wq!`
+
 Apply the yaml definition to create a fluent-ds DaemonSet
 ```
 kubectl apply -f ds-pod.yaml
