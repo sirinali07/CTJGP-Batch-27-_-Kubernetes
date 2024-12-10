@@ -9,7 +9,7 @@ A **StatefulSet** in Kubernetes is a specialized controller designed to manage s
     * Caches (e.g., Redis with persistence)
   * Applications that need predictable DNS or hostname for intercommunication.
 
-  ![image](https://github.com/user-attachments/assets/48bd5d25-3b0f-4ca3-9347-d3cffd40cef1)
+ ![image](https://github.com/user-attachments/assets/1c466a53-54ad-44df-b13a-a0b10efd3e9f)
 
 
 
