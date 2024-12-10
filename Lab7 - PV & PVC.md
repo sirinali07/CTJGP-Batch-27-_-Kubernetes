@@ -117,8 +117,10 @@ kubectl exec -it pv-pod -- /bin/bash
 ```
 exit
 ```
+### Task 5: Cleanup the resources
 delete the resources created in this lab.
 ```
+
 kubectl delete -f pv-pod.yaml
 ```
 ```
@@ -127,7 +129,127 @@ kubectl delete -f pv-claim.yaml
 ```
 kubectl delete -f pv-volume.yaml
 ```
+## Dynamic Provisioning
+
+The **EBS CSI** driver enables Kubernetes to interact with AWS EBS for provisioning, attaching, and managing persistent storage dynamically.
+
+A **StorageClass** in Kubernetes is a powerful abstraction layer that defines how storage resources (like AWS EBS, Google Persistent Disks, Azure Disks, or others) should be provisioned and managed dynamically. It simplifies and automates the creation and management of persistent storage in a Kubernetes cluster by providing predefined policies for storage provisioning.
+
+### Task 1: Check CSI and Storage Class
+
+Verify Installed EBS CSI
+```bash
+kubectl get pods -A | grep ebs
+```
+Ensure the pods related to aws-ebs-csi-driver are running successfully.
+
+Verify the available Storage Class
+```bash
+kubectl get sc
+```
+### Task 2: Create a PersistentVolumeClaim (PVC) using below yaml
+
+```
+vi pvc.yaml
+```
+
+Add the given content, by pressing `INSERT`
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-dynamic-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: gp2
+```
+save the file using `ESCAPE + :wq!`
+
+Apply the definition yaml
+```
+kubectl apply -f pvc.yaml
+```
+
+Verify the PVC
+```bash
+kubectl get pvc
+```
+Ensure the PVC is Bound to a dynamically provisioned PV.
 
 
+### Task 3: Create a Pod that Uses the PVC
 
+```
+vi pod.yaml
+```
 
+Add the given content, by pressing `INSERT`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ebs-dynamic-app
+spec:
+  containers:
+  - name: app
+    image: nginx
+    volumeMounts:
+    - mountPath: "/usr/share/nginx/html"
+      name: ebs-volume
+  volumes:
+  - name: ebs-volume
+    persistentVolumeClaim:
+      claimName: ebs-dynamic-pvc
+```
+save the file using `ESCAPE + :wq!`
+
+Apply the definition yaml
+```
+kubectl apply -f pod.yaml
+```
+
+Verify the POD
+```bash
+kubectl get po
+```
+Ensure the Pod is running and the volume is mounted successfully.
+
+### Task 4: Test the Persistent Volume
+
+Access the Pod
+```bash
+kubectl exec -it ebs-dynamic-app -- bash
+```
+
+Navigate to the Mounted Directory
+```bash
+cd /usr/share/nginx/html
+```
+
+Create a Test File
+```bash
+echo "Hello from EBS-backed storage!" > index.html
+```
+
+Exit the Pod
+```bash
+exit
+```
+
+### Task 5: Cleanup the resources
+Delete the pod
+
+```bash
+kubectl delete -f pod.yaml
+```
+Delete the pvc
+
+```bash
+kubectl delete -f pvc.yaml
+```
